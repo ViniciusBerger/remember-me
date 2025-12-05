@@ -57,7 +57,7 @@ public class ReminderController {
         try {
             Map<String,Object> res = new HashMap<>();
 
-            List<ReminderResponseDTO> remindersFromDb = reminderService.GetReminders();
+            List<ReminderResponseDTO> remindersFromDb = reminderService.GetAllReminders();
 
             res.put("status", "200");
             res.put("data", remindersFromDb);

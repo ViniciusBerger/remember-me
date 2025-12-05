@@ -9,18 +9,21 @@ public class ReminderResponseDTO {
     private String title;
     private LocalTime reminderTime;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    public ReminderResponseDTO(String title, LocalTime reminderTime, LocalDateTime createdAt) {
+    public ReminderResponseDTO(String title, LocalTime reminderTime, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.title = title;
         this.reminderTime = reminderTime;
         this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
-    public static ReminderResponseDTO toReminderResponse(Reminder r) {
+    public static ReminderResponseDTO toReminderResponseDTO(Reminder r) {
         return new ReminderResponseDTO(
                 r.getTitle(),
                 r.getReminderTime(),
-                r.getCreatedAt()
+                r.getCreatedAt(),
+                r.getUpdatedAt()
         );
     }
 
@@ -35,5 +38,9 @@ public class ReminderResponseDTO {
 
     public LocalDateTime getCreatedAt(){
         return this.createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt(){
+        return this.updatedAt;
     }
 }

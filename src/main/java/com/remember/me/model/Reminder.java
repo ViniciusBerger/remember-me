@@ -1,5 +1,6 @@
 package com.remember.me.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class Reminder {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+    @Column(unique = true)
     private String title;
     private LocalTime reminderTime;
     @CreationTimestamp
@@ -23,35 +25,48 @@ public class Reminder {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Reminder(){
 
-    };
-
+    // constructors 
+    public Reminder(){};
     public Reminder(String title, LocalTime reminderTime){
         this.title = title;
         this.reminderTime = reminderTime;
     };
-
-    public String toString(){
-        return "Title: " + title + "\n" + "reminderTime: " + reminderTime + "\n" + "createdAt: " + createdAt + "\n" + "updatedAt: " + updatedAt;
-    }
-
-    public long getId() {
-        return id;
-    }
-
+    
+    // title section
     public String getTitle(){
         return this.title;
     }
+    public void setTitle(String title){
+        this.title = title;
+    }
 
+
+    // reminderTime section
     public LocalTime getReminderTime(){
         return this.reminderTime;
+    }
+    public void setReminderTime(LocalTime newTime){
+        this.reminderTime = newTime;
+    }
+
+    /*
+     *  Getters
+     */
+    public long getId() {
+        return id;
     }
 
     public LocalDateTime getCreatedAt(){
         return this.createdAt;
     }
 
+    public LocalDateTime getUpdatedAt(){
+        return this.createdAt;
+    }
 
+    public String toString(){
+        return "Title: " + title + "\n" + "reminderTime: " + reminderTime + "\n" + "createdAt: " + createdAt + "\n" + "updatedAt: " + updatedAt;
+    }
 
 }

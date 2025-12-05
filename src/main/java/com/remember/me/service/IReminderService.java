@@ -1,7 +1,9 @@
 package com.remember.me.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.remember.me.dto.ReminderEditRequestDTO;
 import com.remember.me.dto.ReminderResponseDTO;
 import com.remember.me.model.Reminder;
 
@@ -22,14 +24,21 @@ public interface IReminderService {
      *
      * @return a list of reminders
      */
-    List<ReminderResponseDTO> GetReminders();
+    List<ReminderResponseDTO> GetAllReminders();
+
+    /**
+     * Get one specific reminder.
+     *
+     * @return a list of reminders
+     */
+    Optional<ReminderResponseDTO> getReminder(String title);
 
     /**
      * Updates an existing reminder.
      *
      * @return a status message indicating the result of the update
      */
-    String editReminder();
+    ReminderResponseDTO editReminder(Long id, ReminderEditRequestDTO editRequest);
 
     /**
      * Deletes an existing reminder.
